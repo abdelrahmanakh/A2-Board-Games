@@ -206,7 +206,7 @@ void TicTacToe5x5Player<T>::getmove(int &x, int &y) {
     }
 }
 
-//:TicTacToe5x5RandomPlayer constructor
+//TicTacToe5x5RandomPlayer constructor
 template<typename T>
 TicTacToe5x5RandomPlayer<T>::TicTacToe5x5RandomPlayer(T symbol):RandomPlayer<T>(symbol) {
     this->dimension = 5;
