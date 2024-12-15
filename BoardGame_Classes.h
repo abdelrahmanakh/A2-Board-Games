@@ -174,4 +174,3 @@ void Player<T>::setBoard(Board<T>* b) {
 
 
 #endif //_BOARDGAME_CLASSES_H
-
