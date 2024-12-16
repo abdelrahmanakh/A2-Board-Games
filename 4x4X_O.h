@@ -25,7 +25,7 @@ public:
 template<typename T>
 class _4x4_Player : public Player<T> {
 public:
-    set <pair<int, int>> token;
+    set<pair<int, int>> token;
     T temp_symbol;
 
     _4x4_Player(string name, T symbol);
@@ -39,7 +39,7 @@ public:
 template<typename T>
 class _4x4_Random_Player : public RandomPlayer<T> {
 public:
-    set <pair<int, int>> token;
+    set<pair<int, int>> token;
     T temp_symbol;
 
     _4x4_Random_Player(T symbol);
@@ -118,7 +118,7 @@ bool _4x4_Board<T>::is_win() {
                                                {{0, 0}, {1, 1},  {2, 2}},
                                                {{0, 0}, {1, -1}, {2, -2}}};
     for (int i = 0; i < this->rows; i++)
-        for (int j = 0; j < this->rows; j++) {
+        for (int j = 0; j < this->columns; j++) {
             for (auto pat: patterns) {
                 bool valid = this->board[i][j];
                 for (auto [di, dj]: pat) {
