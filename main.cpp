@@ -1,7 +1,10 @@
 #include <iostream>
 #include "5x5_Tic_Tac_Toe.h"
+#include "Four_in_a_row.h"
 #include "ToeTacTic.h"
+#include "Num_Tic_Tac_Toe.h"
 #include "Pyramic_TicTacToe.h"
+#include "4x4X_O.h"
 #include "Word_TicTacToe.h"
 
 using namespace std;
@@ -61,7 +64,17 @@ int main() {
         if (choice == '1') {
             //Mazen
         } else if (choice == '2') {
-            //Youssef
+            PlayerMenu(data);
+            players[0] = new Four_Player<char>(data[0], data[1][0]);
+            if (data[2] == "Random Player") {
+                players[1] = new Four_Random_Player<char>(data[3][0]);
+            } else {
+                players[1] = new Four_Player<char>(data[2], data[3][0]);
+            }
+            auto *board = new Four_Board<char>();
+            GameManager<char> Four(board, players);
+            Four.run();
+            delete board;
         } else if (choice == '3') {
             PlayerMenu(data);
             players[0] = new TicTacToe5x5Player<char>(data[0], data[1][0]);
@@ -79,7 +92,17 @@ int main() {
         } else if (choice == '4') {
             //Mazen
         } else if (choice == '5') {
-            //Youssef
+            PlayerMenu(data);
+            players[0] = new Num_Player<char>(data[0], data[1][0]);
+            if (data[2] == "Random Player") {
+                players[1] = new Num_Random_Player<char>(data[3][0]);
+            } else {
+                players[1] = new Num_Player<char>(data[2], data[3][0]);
+            }
+            auto *board = new Num_Board<char>();
+            GameManager<char> Num(board, players);
+            Num.run();
+            delete board;
         } else if (choice == '6') {
             PlayerMenu(data);
             players[0] = new ToeTacTicPlayer<char>(data[0], data[1][0]);
@@ -97,7 +120,19 @@ int main() {
             }
             delete board;
         } else if (choice == '7') {
-            //Youssef
+            PlayerMenu(data);
+            players[0] = new _4x4_Player<char>(data[0], data[1][0]);
+            if (data[2] == "Random Player") {
+                players[1] = new _4x4_Random_Player<char>(data[3][0]);
+            } else {
+                players[1] = new _4x4_Player<char>(data[2], data[3][0]);
+            }
+            auto *board = new _4x4_Board<char>();
+            GameManager<char> _4x4(board, players);
+            players[0]->setBoard(board);
+            players[1]->setBoard(board);
+            _4x4.run();
+            delete board;
         } else if (choice == '8') {
             //Mazen
         } else if (choice == '9') {
