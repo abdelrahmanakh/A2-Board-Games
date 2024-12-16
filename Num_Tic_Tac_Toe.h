@@ -77,14 +77,8 @@ template<typename T>
 bool Num_Board<T>::update_board(int x, int y, T mark) {
     // Only update if move is valid
     if (!(x < 0 || x >= this->rows || y < 0 || y >= this->columns) && (this->board[x][y] == 0 || mark == 0)) {
-        if (mark == 0) {
-            this->n_moves--;
-            this->board[x][y] = 0;
-        } else {
-            this->n_moves++;
-            this->board[x][y] = mark;
-        }
-
+        this->n_moves++;
+        this->board[x][y] = mark;
         return true;
     }
     return false;
