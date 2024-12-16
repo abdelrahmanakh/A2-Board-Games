@@ -135,10 +135,10 @@ bool Num_Board<T>::game_is_over() {
 template<typename T>
 Num_Player<T>::Num_Player(string name, T symbol) : Player<T>(name, symbol) {
     if (symbol == 'X') {
-        for (char i = 1; i <= '9'; i += 2)
+        for (char i = '1'; i <= '9'; i += 2)
             this->moves.insert(i);
     } else {
-        for (char i = 2; i <= '9'; i += 2)
+        for (char i = '2'; i <= '9'; i += 2)
             this->moves.insert(i);
     }
 }
@@ -169,10 +169,10 @@ Num_Random_Player<T>::Num_Random_Player(T symbol) : RandomPlayer<T>(symbol) {
     srand(static_cast<unsigned int>(time(0)));  // Seed the random number generator
 
     if (symbol == 'X') {
-        for (char i = 1; i <= '9'; i += 2)
+        for (char i = '1'; i <= '9'; i += 2)
             this->moves.insert(i);
     } else {
-        for (char i = 2; i <= '9'; i += 2)
+        for (char i = '2'; i <= '9'; i += 2)
             this->moves.insert(i);
     }
 }
