@@ -133,7 +133,7 @@ Four_Player<T>::Four_Player(string name, T symbol) : Player<T>(name, symbol) {}
 
 template<typename T>
 void Four_Player<T>::getmove(int &x, int &y) {
-    cout << "\nPlease enter your move x and y separated by spaces: ";
+    cout << "\nPlease enter your move x and y (x from 0 to 5, y from 0 to 6) separated by spaces: ";
     cin >> x >> y;
 }
 
