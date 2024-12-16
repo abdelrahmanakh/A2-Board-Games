@@ -70,14 +70,8 @@ bool Four_Board<T>::update_board(int x, int y, T mark) {
     // Only update if move is valid
     if (!(x < 0 || x >= this->rows || y < 0 || y >= this->columns) && (this->board[x][y] == 0 || mark == 0)
         && (x == 5 || this->board[x + 1][y])) {
-        if (mark == 0) {
-            this->n_moves--;
-            this->board[x][y] = 0;
-        } else {
-            this->n_moves++;
-            this->board[x][y] = toupper(mark);
-        }
-
+        this->n_moves++;
+        this->board[x][y] = toupper(mark);
         return true;
     }
     return false;
@@ -100,13 +94,12 @@ void Four_Board<T>::display_board() {
 // Returns true if there is any winner
 template<typename T>
 bool Four_Board<T>::is_win() {
-    // Check rows
     vector<vector<pair<int, int>>> patterns = {{{0, 0}, {0, 1},  {0, 2},  {0, 3}},
                                                {{0, 0}, {1, 0},  {2, 0},  {3, 0}},
                                                {{0, 0}, {1, 1},  {2, 2},  {3, 3}},
                                                {{0, 0}, {1, -1}, {2, -2}, {3, -3}}};
     for (int i = 0; i < this->rows; i++)
-        for (int j = 0; j < this->rows; j++) {
+        for (int j = 0; j < this->columns; j++) {
             for (auto pat: patterns) {
                 bool valid = this->board[i][j];
                 for (auto [di, dj]: pat) {
@@ -140,7 +133,7 @@ Four_Player<T>::Four_Player(string name, T symbol) : Player<T>(name, symbol) {}
 
 template<typename T>
 void Four_Player<T>::getmove(int &x, int &y) {
-    cout << "\nPlease enter your move x and y (0 to 2) separated by spaces: ";
+    cout << "\nPlease enter your move x and y separated by spaces: ";
     cin >> x >> y;
 }
 
