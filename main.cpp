@@ -13,14 +13,11 @@ using namespace std;
 //function to get Players names and symbols
 void PlayerMenu(string *arr) {
     string name;
-    char symbol1;
     cout << "Please Enter Your Name:";
     cin.ignore();
     getline(cin, name);
-    cout << "Please Enter Your Symbol:";
-    cin >> symbol1;
     arr[0] = name;
-    arr[1] = symbol1;
+    arr[1] = 'X';
     cout << "Choose the other Player type:\n1)Human\n2)Random computer\n";
     while (true) {
         char choice;
@@ -29,31 +26,18 @@ void PlayerMenu(string *arr) {
             cout << "Please Enter the name of the other Player:";
             cin.ignore();
             getline(cin, name);
-            cout << "Please Enter the symbol of the other Player:";
-            while (true) {
-                cin >> symbol1;
-                if (symbol1 != arr[1][0])
-                    break;
-                cout << "Can't use two similar symbols try again!\n";
-            }
             arr[2] = name;
-            arr[3] = symbol1;
+            arr[3] = 'O';
             break;
         } else if (choice == '2') {
-            cout << "Please Enter the symbol of the Random Player:";
-            while (true) {
-                cin >> symbol1;
-                if (symbol1 != arr[1][0])
-                    break;
-                cout << "Can't use two similar symbols try again!\n";
-            }
             arr[2] = "Random Player";
-            arr[3] = symbol1;
+            arr[3] = 'O';
             break;
         } else {
             cout << "Please Enter A valid Choice!!\n";
         }
     }
+    cout << arr[0] << ": X\n" << arr[2] << ": O\n";
 }
 
 int main() {
