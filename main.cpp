@@ -6,6 +6,7 @@
 #include "Pyramic_TicTacToe.h"
 #include "4x4X_O.h"
 #include "Word_TicTacToe.h"
+#include "Ultimate_TicTacToe.h"
 
 using namespace std;
 
@@ -62,7 +63,18 @@ int main() {
         char choice;
         cin >> choice;
         if (choice == '1') {
-            //Mazen
+            PlayerMenu(data);
+            players[0] = new Pyramic_Player<char>(data[0], data[1][0]);
+            if(data[2] == "Random Player") {
+                players[1] = new Pyramic_Random_Player<char>(data[3][0]);
+            }
+            else {
+                players[1] = new Pyramic_Player<char>(data[2], data[3][0]);
+            }
+            auto *board = new Pyramic_Board<char>();
+            GameManager<char> Pyramic_TicTacToe_game(board, players);
+            Pyramic_TicTacToe_game.run();
+            delete board;
         } else if (choice == '2') {
             PlayerMenu(data);
             players[0] = new Four_Player<char>(data[0], data[1][0]);
@@ -90,7 +102,19 @@ int main() {
             cout << "The Winner is: " << winner << "\n";
             delete board;
         } else if (choice == '4') {
-            //Mazen
+            PlayerMenu(data);
+            players[0] = new Word_Player<char>(data[0], data[1][0]);
+            if(data[2] == "Random Player") {
+                players[1] = new Word_Random_Player<char>(data[3][0]);
+            }
+            else {
+                players[1] = new Word_Player<char>(data[2], data[3][0]);
+            }
+
+            auto *board = new Word_Board<char>();
+            GameManager<char> Word_TicTacToe_game(board, players);
+            Word_TicTacToe_game.run();
+            delete board;
         } else if (choice == '5') {
             PlayerMenu(data);
             players[0] = new Num_Player<char>(data[0], data[1][0]);
@@ -134,9 +158,20 @@ int main() {
             _4x4.run();
             delete board;
         } else if (choice == '8') {
-            //Mazen
-        } else if (choice == '9') {
+            PlayerMenu(data);
+            players[0] = new Ultimate_Player<char>(data[0], data[1][0]);
+            if(data[2] == "Random Player") {
+                players[1] = new Ultimate_Random_Player<char>(data[3][0]);
+            }
+            else {
+                players[1] = new Ultimate_Player<char>(data[2], data[3][0]);
+            }
 
+            auto *board = new Ultimate_Board<char>();
+            GameManager<char> Ultimate_TicTacToe_game(board, players);
+            Ultimate_TicTacToe_game.run();
+            delete board;
+        } else if (choice == '9') {
             return 0;
         } else {
             cout << "Please Enter A valid choice!!\n";
