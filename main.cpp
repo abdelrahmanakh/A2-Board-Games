@@ -30,13 +30,23 @@ void PlayerMenu(string *arr) {
             cin.ignore();
             getline(cin, name);
             cout << "Please Enter the symbol of the other Player:";
-            cin >> symbol1;
+            while (true) {
+                cin >> symbol1;
+                if (symbol1 != arr[1][0])
+                    break;
+                cout << "Can't use two similar symbols try again!\n";
+            }
             arr[2] = name;
             arr[3] = symbol1;
             break;
         } else if (choice == '2') {
             cout << "Please Enter the symbol of the Random Player:";
-            cin >> symbol1;
+            while (true) {
+                cin >> symbol1;
+                if (symbol1 != arr[1][0])
+                    break;
+                cout << "Can't use two similar symbols try again!\n";
+            }
             arr[2] = "Random Player";
             arr[3] = symbol1;
             break;
@@ -65,10 +75,9 @@ int main() {
         if (choice == '1') {
             PlayerMenu(data);
             players[0] = new Pyramic_Player<char>(data[0], data[1][0]);
-            if(data[2] == "Random Player") {
+            if (data[2] == "Random Player") {
                 players[1] = new Pyramic_Random_Player<char>(data[3][0]);
-            }
-            else {
+            } else {
                 players[1] = new Pyramic_Player<char>(data[2], data[3][0]);
             }
             auto *board = new Pyramic_Board<char>();
@@ -104,10 +113,9 @@ int main() {
         } else if (choice == '4') {
             PlayerMenu(data);
             players[0] = new Word_Player<char>(data[0], data[1][0]);
-            if(data[2] == "Random Player") {
+            if (data[2] == "Random Player") {
                 players[1] = new Word_Random_Player<char>(data[3][0]);
-            }
-            else {
+            } else {
                 players[1] = new Word_Player<char>(data[2], data[3][0]);
             }
 
@@ -160,10 +168,9 @@ int main() {
         } else if (choice == '8') {
             PlayerMenu(data);
             players[0] = new Ultimate_Player<char>(data[0], data[1][0]);
-            if(data[2] == "Random Player") {
+            if (data[2] == "Random Player") {
                 players[1] = new Ultimate_Random_Player<char>(data[3][0]);
-            }
-            else {
+            } else {
                 players[1] = new Ultimate_Player<char>(data[2], data[3][0]);
             }
 
